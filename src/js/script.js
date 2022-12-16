@@ -4,6 +4,12 @@ let footerYear;
 let mobileNav;
 let mobileLinkBox;
 let navigation;
+let slider;
+let prevBtn;
+let nextBtn;
+let listOfSelectors;
+let selectorParent;
+let index = 0;
 
 const main = () => {
 	prepareDOMElements();
@@ -18,11 +24,25 @@ const prepareDOMElements = () => {
 	mobileNav = document.querySelector('.mobile-nav');
 	mobileLinkBox = document.querySelector('.mobile-link-box');
 	navigation = document.querySelector('.navbar');
+	slider = document.querySelector('.slider');
+	prevBtn = document.querySelector('.prev');
+	nextBtn = document.querySelector('.next');
+	listOfSelectors = document.querySelectorAll('.list li');
+	selectorParent = document.querySelector('.list');
 };
 
 const prepareDOMEvents = () => {
 	hamburger.addEventListener('click', handleMobileNav);
 	window.addEventListener('scroll', addShadow);
+	nextBtn.addEventListener('click', nextImg);
+	prevBtn.addEventListener('click', prevImg);
+	listOfSelectors.forEach((item, i) => {
+		item.addEventListener('click', () => {
+			index = i;
+			cleanUpAndTranslate();
+			item.classList.add('selected');
+		});
+	});
 };
 
 const handleMobileNav = () => {
@@ -50,6 +70,25 @@ const addShadow = () => {
 	} else {
 		navigation.style.backgroundColor = '';
 	}
+};
+
+const prevImg = () => {
+	index = index > 0 ? index - 1 : 0;
+	cleanUpAndTranslate();
+	selectorParent.children[index].classList.add('selected');
+};
+
+const nextImg = () => {
+	index = index < 5 ? index + 1 : 5;
+	cleanUpAndTranslate();
+	selectorParent.children[index].classList.add('selected');
+};
+
+const cleanUpAndTranslate = () => {
+	listOfSelectors.forEach((x) => {
+		x.classList.remove('selected');
+	});
+	slider.style.transform = `translate(${index * -16.666667}%)`;
 };
 
 const handleCurrentYear = () => {
