@@ -9,7 +9,15 @@ let prevBtn;
 let nextBtn;
 let listOfSelectors;
 let selectorParent;
+let navLinks
+let spySections
+let observer
 let index = 0;
+
+const options = {
+    threshold: [0.5, 0.9]
+};
+
 
 const main = () => {
 	prepareDOMElements();
@@ -29,6 +37,9 @@ const prepareDOMElements = () => {
 	nextBtn = document.querySelector('.next');
 	listOfSelectors = document.querySelectorAll('.list li');
 	selectorParent = document.querySelector('.list');
+	navLinks = document.querySelectorAll('.desktop-link')
+	spySections = document.querySelectorAll('.spy-section');
+	observer = new IntersectionObserver(handleScrollspy, options);
 };
 
 const prepareDOMEvents = () => {
@@ -42,6 +53,9 @@ const prepareDOMEvents = () => {
 			cleanUpAndTranslate();
 			item.classList.add('selected');
 		});
+	});
+	spySections.forEach(section => {
+		observer.observe(section);
 	});
 };
 
@@ -90,6 +104,25 @@ const cleanUpAndTranslate = () => {
 	});
 	slider.style.transform = `translate(${index * -16.666667}%)`;
 };
+
+
+
+
+const handleScrollspy = entries => {
+	entries.forEach(entry => {
+		const activeNav = document.querySelector(`a[href='#${entry.target.id}']`);
+		if (entry.isIntersecting) {
+			navLinks.forEach(link => link.classList.remove('active'));
+			activeNav.classList.add('active')
+		};
+	});
+};
+
+ 
+
+// spySections.forEach(section => {
+//     observer.observe(section);
+// });
 
 const handleCurrentYear = () => {
 	const year = new Date().getFullYear();

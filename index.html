@@ -14,11 +14,24 @@
 </head>
 
 
-
-
-
-<body>
+<body class="main-page">
   <nav class="navbar">
+    <div class="wrapper">
+      <div class="desktop-nav">
+        <div class="logo-box">
+          <a href="#home">
+            <p class="brand">Azymut</p>
+          </a>
+        </div>
+        <div class="desktop-link-box">
+          <a href="#" class="desktop-link active">Home</a>
+          <a href="#aboutus" class="desktop-link">O nas</a>
+          <a href="#offer" class="desktop-link">Oferta</a>
+          <a href="#realizations" class="desktop-link">Realizacje</a>
+          <a href="#contact" class="desktop-link">Kontakt</a>
+        </div>
+      </div>
+    </div>
     <div class="hamburger-container">
       <div class="stick"></div>
     </div>
@@ -31,33 +44,17 @@
         <a href="#contact" class="mobile-link">Kontakt</a>
       </div>
     </div>
-    <div class="wrapper">
-      <div class="desktop-nav">
-        <div class="logo-box">
-          <a href="#">
-            <p class="brand">Azymut</p>
-          </a>
-        </div>
-        <div class="link-box">
-          <a href="#" class="link">Home</a>
-          <a href="#aboutus" class="link">O nas</a>
-          <a href="#offer" class="link">Oferta</a>
-          <a href="#realizations" class="link">Realizacje</a>
-          <a href="#contact" class="link">Kontakt</a>
-        </div>
-      </div>
-    </div>
   </nav>
 
-  <header>
-    <div class="shadow"></div>
+  <header id="home">
+    <div class="shadow spy-section"></div>
     <h1 class="header-text">Azymut Usługi Geodezyjne</h1>
     <h3>Tomasz Naworyta</h3>
     <a href="#aboutus"><button class="header-btn">Poznaj nas</button></a>
   </header>
 
   <main>
-    <section class="aboutus" id="aboutus">
+    <section class="aboutus spy-section" id="aboutus">
       <div class="wrapper">
         <h2>o nas</h2>
         <div class="underline"></div>
@@ -73,7 +70,7 @@
       </div>
     </section>
 
-    <section class="offer" id="offer">
+    <section class="offer spy-section" id="offer">
       <div class="wrapper">
         <h2>oferta</h2>
         <div class="underline"></div>
@@ -97,7 +94,8 @@
         <a href="#"><button class="offer-btn">kontakt</button></a>
       </div>
     </section>
-    <section class="realizations" id="realizations">
+
+    <section class="realizations spy-section" id="realizations">
       <div class="wrapper">
         <h2>Realizacje</h2>
         <div class="underline"></div>
@@ -182,7 +180,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact spy-section" id="contact">
       <div class="shadow"></div>
       <div class="wrapper">
         <h2>Kontakt</h2>
