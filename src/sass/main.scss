@@ -40,8 +40,6 @@ body {
 	height: 100%;
 }
 
-
-
 .hamburger-container {
 	display: none;
 	position: absolute;
@@ -144,11 +142,13 @@ nav {
 			margin: 0 0.5em;
 			font-size: 3.5rem;
 			font-weight: 500;
+			z-index: 150;
 			a {
 				text-decoration: none;
 				color: white;
 				transition: color 0.4s;
 				letter-spacing: 3px;
+
 				&:hover {
 					color: $third;
 				}
@@ -171,7 +171,6 @@ nav {
 		}
 	}
 }
-
 
 header {
 	position: relative;
@@ -376,32 +375,32 @@ h2 {
 				.one {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto1.jpg');
+					background-image: url('../img/example_foto1.jpg');
 				}
 				.second {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto2.jpg');
+					background-image: url('../img/example_foto2.jpg');
 				}
 				.third {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto3.jpg');
+					background-image: url('../img/example_foto3.jpg');
 				}
 				.fourth {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto4.jpg');
+					background-image: url('../img/example_foto4.jpg');
 				}
 				.fifth {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto5.jpg');
+					background-image: url('../img/example_foto5.jpg');
 				}
 				.fourth {
 					background-size: cover;
 					background-position: center;
-					background-image: url('/dist/img/example_foto1.jpg');
+					background-image: url('../img/example_foto1.jpg');
 				}
 			}
 			.controls {
@@ -456,7 +455,7 @@ h2 {
 	position: relative;
 	padding: 1em 0;
 	text-align: center;
-	background-image: url('/dist/img/contact_background.jpg');
+	background-image: url('../img/contact_background.jpg');
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -497,7 +496,7 @@ h2 {
 			display: flex;
 			flex-direction: column;
 			row-gap: 1.5rem;
-		
+
 			input {
 				padding: 0.8em;
 				background: none;
@@ -514,7 +513,6 @@ h2 {
 			.form-email-phone {
 				display: flex;
 				gap: 1.5rem;
-				
 			}
 
 			textarea {
@@ -552,8 +550,11 @@ h2 {
 		}
 	}
 
-	iframe {
-		margin: 2em 0 1em 0;
+	.map-container {
+		width: 100%;
+		iframe {
+			width: 80%;
+		}
 	}
 }
 
@@ -585,7 +586,6 @@ footer {
 	}
 }
 
-
 // MEDIA
 
 @media (max-width: 992px) {
@@ -602,4 +602,80 @@ footer {
 			display: none;
 		}
 	}
+}
+
+@media (max-width: 770px) {
+	html {
+		font-size: 60%;
+	}
+
+	.contact .contact-container {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		padding: 1em 0;
+	}
+
+	.contact .contact-text {
+		margin-top: 3em;
+	}
+
+	.contact .contact-container .contact-form {
+		padding-top: 1em;
+		display: flex;
+		flex-direction: column;
+		row-gap: 1.5rem;
+	}
+
+	.contact .map-container {
+		margin-top: 1em;
+		width: 100%;
+	}
+
+	.realizations .carousel-container {
+		width: 100%;
+	}
+
+	.offer .text-container h3 {
+		font-size: 2rem;
+	}
+	.offer .text-container p {
+		font-size: 2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	html {
+		font-size: 45%;
+	}
+
+	.realizations .carousel-container .carousel .controls .list {
+		display: none;
+	}
+
+	.contact .contact-container .contact-form .form-btn {
+		width: 24%;
+		align-self: center;
+		background: none;
+		font-size: 1.6rem;
+		
+	}
+
+	header .header-text {
+		font-size: 5.5rem;
+	}
+
+	.offer .img-container {
+		display: none;
+	}
+
+	.offer .text-container {
+		padding: 0 1.2em;
+		width: 100%;
+	}
+
+	nav .mobile-nav .mobile-link-box .mobile-link {
+		font-size: 2.4rem;
+	}
+
 }

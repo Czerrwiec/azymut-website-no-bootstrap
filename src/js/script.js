@@ -9,15 +9,15 @@ let prevBtn;
 let nextBtn;
 let listOfSelectors;
 let selectorParent;
-let navLinks
-let spySections
-let observer
+let navLinks;
+let spySections;
+let observer;
+let mobileLinks;
 let index = 0;
 
 const options = {
-    threshold: [0.5, 0.9]
+	threshold: [0.5, 0.9],
 };
-
 
 const main = () => {
 	prepareDOMElements();
@@ -37,8 +37,9 @@ const prepareDOMElements = () => {
 	nextBtn = document.querySelector('.next');
 	listOfSelectors = document.querySelectorAll('.list li');
 	selectorParent = document.querySelector('.list');
-	navLinks = document.querySelectorAll('.desktop-link')
+	navLinks = document.querySelectorAll('.desktop-link');
 	spySections = document.querySelectorAll('.spy-section');
+	mobileLinks = document.querySelectorAll('.mobile-link');
 	observer = new IntersectionObserver(handleScrollspy, options);
 };
 
@@ -54,8 +55,16 @@ const prepareDOMEvents = () => {
 			item.classList.add('selected');
 		});
 	});
-	spySections.forEach(section => {
+	spySections.forEach((section) => {
 		observer.observe(section);
+	});
+	mobileLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			mobileNav.style.transform = 'translateY(-105%)';
+			mobileNav.style.opacity = '0';
+			mobileLinkBox.style.opacity = '0';
+			stick.classList.remove('trigger');
+		});
 	});
 };
 
@@ -105,24 +114,15 @@ const cleanUpAndTranslate = () => {
 	slider.style.transform = `translate(${index * -16.666667}%)`;
 };
 
-
-
-
-const handleScrollspy = entries => {
-	entries.forEach(entry => {
+const handleScrollspy = (entries) => {
+	entries.forEach((entry) => {
 		const activeNav = document.querySelector(`a[href='#${entry.target.id}']`);
 		if (entry.isIntersecting) {
-			navLinks.forEach(link => link.classList.remove('active'));
-			activeNav.classList.add('active')
-		};
+			navLinks.forEach((link) => link.classList.remove('active'));
+			activeNav.classList.add('active');
+		}
 	});
 };
-
- 
-
-// spySections.forEach(section => {
-//     observer.observe(section);
-// });
 
 const handleCurrentYear = () => {
 	const year = new Date().getFullYear();
